@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Avatars\000.png" />
+    <None Remove="Assets\Avatars\001.png" />
+    <None Remove="Assets\Avatars\002.png" />
+    <None Remove="Assets\Avatars\003.png" />
+    <None Remove="Assets\Avatars\004.png" />
+    <None Remove="Assets\Avatars\005.png" />
+    <None Remove="Assets\Avatars\006.png" />
+    <None Remove="Assets\Avatars\007.png" />
+    <None Remove="Assets\Avatars\008.png" />
+    <None Remove="Assets\Avatars\009.png" />
+    <None Remove="Assets\Avatars\010.png" />
+    <None Remove="Assets\Avatars\011.png" />
+    <None Remove="Assets\Avatars\012.png" />
+    <None Remove="Assets\Avatars\013.png" />
+    <None Remove="Assets\login_background.jpg" />
+    <None Remove="Assets\logo_login.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ModelView\" />
+    <Folder Include="Model\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Avatars\000.png" />
+    <Resource Include="Assets\Avatars\001.png" />
+    <Resource Include="Assets\Avatars\002.png" />
+    <Resource Include="Assets\Avatars\003.png" />
+    <Resource Include="Assets\Avatars\004.png" />
+    <Resource Include="Assets\Avatars\005.png" />
+    <Resource Include="Assets\Avatars\006.png" />
+    <Resource Include="Assets\Avatars\007.png" />
+    <Resource Include="Assets\Avatars\008.png" />
+    <Resource Include="Assets\Avatars\009.png" />
+    <Resource Include="Assets\Avatars\010.png" />
+    <Resource Include="Assets\Avatars\011.png" />
+    <Resource Include="Assets\Avatars\012.png" />
+    <Resource Include="Assets\Avatars\013.png" />
+    <Resource Include="Assets\login_background.jpg" />
+    <Resource Include="Assets\logo_login.png" />
+  </ItemGroup>
+
+</Project>
