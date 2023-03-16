@@ -8,6 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ModelView\**" />
+    <Compile Remove="Model\**" />
+    <EmbeddedResource Remove="ModelView\**" />
+    <EmbeddedResource Remove="Model\**" />
+    <None Remove="ModelView\**" />
+    <None Remove="Model\**" />
+    <Page Remove="ModelView\**" />
+    <Page Remove="Model\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Assets\Avatars\000.png" />
     <None Remove="Assets\Avatars\001.png" />
     <None Remove="Assets\Avatars\002.png" />
@@ -27,8 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ModelView\" />
-    <Folder Include="Model\" />
+    <Folder Include="Logic\" />
   </ItemGroup>
 
   <ItemGroup>
