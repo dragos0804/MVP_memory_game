@@ -24,5 +24,10 @@ namespace Tema_1_MVP.View.UserControls
         {
             InitializeComponent();
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

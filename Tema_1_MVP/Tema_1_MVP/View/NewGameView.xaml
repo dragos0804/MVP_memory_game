@@ -3,15 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tema_1_MVP.View"
+        xmlns:local="clr-namespace:Tema_1_MVP.Model"
         mc:Ignorable="d"
         Title="NewGameView" Height="650" Width="900"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        AllowsTransparency="True"
-        MouseDown="Window_MouseDown">
+        AllowsTransparency="True">
+    <Window.DataContext>
+        <local:NewGameModel/>
+    </Window.DataContext>
     <Border CornerRadius="12">
         <Border.Background>
             <ImageBrush ImageSource="/Assets/login_background.jpg"/>
@@ -62,7 +64,7 @@
                             FontFamily="Montserrat"
                             Cursor="Hand"
                             Grid.Column="1"
-                            Click="btnMinimize_Click" FontWeight="Bold">
+                            Click="btnClose_Click" FontWeight="Bold">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#28AEED"/>
@@ -174,14 +176,7 @@
                                Margin="10, 0, 10, 0"/>
                         <StackPanel Margin="10">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="20">
-                                <ComboBox SelectedIndex="2">
-                                    <ComboBoxItem Content="2" />
-                                    <ComboBoxItem Content="3" />
-                                    <ComboBoxItem Content="4" />
-                                    <ComboBoxItem Content="5" />
-                                    <ComboBoxItem Content="6" />
-                                    <ComboBoxItem Content="7" />
-                                </ComboBox>
+                                <ComboBox SelectedIndex="2" ItemsSource="{Binding dimensions}" />
                                 <TextBlock Text="x"
                                Foreground ="DarkGray"
                                FontSize="12"
@@ -190,14 +185,8 @@
                                TextAlignment="Center"
                                VerticalAlignment="Center"
                                Margin="10, 0, 10, 0"/>
-                                <ComboBox SelectedIndex="2">
-                                    <ComboBoxItem Content="2" />
-                                    <ComboBoxItem Content="3" />
-                                    <ComboBoxItem Content="4" />
-                                    <ComboBoxItem Content="5" />
-                                    <ComboBoxItem Content="6" />
-                                    <ComboBoxItem Content="7" />
-                                </ComboBox>
+                                <ComboBox SelectedIndex="2" ItemsSource="{Binding dimensions}" />
+
                             </StackPanel>
                             <Button x:Name="btnStartNewGame"
                             BorderThickness="0"

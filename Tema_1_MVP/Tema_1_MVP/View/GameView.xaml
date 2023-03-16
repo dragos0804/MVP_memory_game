@@ -8,19 +8,27 @@
         WindowState="Maximized"
         WindowStyle="None"
         Title="GameView" Height="450" Width="800">
+    
     <Grid>
-        <ItemsControl ItemsSource="{Binding Images}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid Columns="3" Rows="3" 
-                                 HorizontalAlignment="Center" VerticalAlignment="Center"
-                                 Margin="10"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
+        <ItemsControl ItemsSource="{Binding Path=StringItems}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Image Source="/Assets/MemoryCards/backCard.jpg" Stretch="Uniform" 
-                           Margin="5" Width="100" Height="100"/>
+                    <ItemsControl ItemsSource="{Binding}">
+                        <!-- data contextul se aasociaza aici -->
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Content = "{Binding}"
+                                        Width = "60"
+                                        Height = "60"
+                                        Margin = "10"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

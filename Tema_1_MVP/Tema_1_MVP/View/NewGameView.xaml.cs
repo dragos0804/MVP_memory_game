@@ -23,5 +23,9 @@ namespace Tema_1_MVP.View
         {
             InitializeComponent();
         }
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

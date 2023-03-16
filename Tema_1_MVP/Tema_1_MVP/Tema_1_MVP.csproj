@@ -9,13 +9,9 @@
 
   <ItemGroup>
     <Compile Remove="ModelView\**" />
-    <Compile Remove="Model\**" />
     <EmbeddedResource Remove="ModelView\**" />
-    <EmbeddedResource Remove="Model\**" />
     <None Remove="ModelView\**" />
-    <None Remove="Model\**" />
     <Page Remove="ModelView\**" />
-    <Page Remove="Model\**" />
   </ItemGroup>
 
   <ItemGroup>
