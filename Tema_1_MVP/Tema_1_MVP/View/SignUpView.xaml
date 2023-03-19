@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Tema_1_MVP.View"
+        xmlns:local="clr-namespace:Tema_1_MVP.Model"
         mc:Ignorable="d"
         Title="SignUpView" Height="650" Width="900"
         WindowStyle="None"
@@ -149,11 +149,13 @@
                                FontFamily="Montserrat"
                                TextAlignment="Center"
                                Margin="0, 20, 0, 0"/>
-
-                    <Image Source="/Assets/Avatars/000.png"
+                    <StackPanel>
+                        <Image x:Name="MyImage" Source="{Binding CurrentImage}"
                                Width="100" 
                                Height="100"
                                Margin ="0, 10, 0, 0"/>
+                    </StackPanel>
+                    
                     <StackPanel Margin="10">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="60">
                             <Button x:Name="btnPrevImage"
@@ -165,7 +167,7 @@
                             Cursor="Hand"
                             Grid.Column="2"
                             Margin="0, 0, 10, 0"
-                            Click="btnClose_Click">
+                            Click="Previous_Click">
                                 <Button.Style>
                                     <Style TargetType="Button">
                                         <Setter Property="Background" Value="#462ADB"/>
@@ -200,7 +202,7 @@
                             Cursor="Hand"
                             Grid.Column="2"
                             Margin="10, 0, 0, 0"
-                            Click="btnClose_Click">
+                            Click="Next_Click">
                                 <Button.Style>
                                     <Style TargetType="Button">
                                         <Setter Property="Background" Value="#462ADB"/>
@@ -259,7 +261,7 @@
                              Margin="0, 5, 0, 0"
                              Padding="20, 0, 0, 0">
                         <TextBox.Background>
-                            <ImageBrush ImageSource="/Assets/user-icon.png"
+                            <ImageBrush ImageSource="\Assets\user_icon.png"
                                         Stretch="None"
                                         AlignmentX="Left"/>
                         </TextBox.Background>
@@ -323,7 +325,7 @@
                             Cursor="Hand"
                             Grid.Column="2"
                             Margin="0, 10, 0, 0"
-                            MouseLeftButtonDown="btnClose_Click"
+                            MouseLeftButtonDown="lblOpenLoginView"
                             HorizontalAlignment="Center">
                         <Label.Style>
                             <Style TargetType="Label">

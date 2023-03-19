@@ -32,10 +32,15 @@ namespace Tema_1_MVP.View
         {
             WindowState = WindowState.Minimized;
         }
-
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+        private void lblOpenSignUpView(object sender, MouseButtonEventArgs e)
+        {
+            SignUpView signUpView = new SignUpView();
+            this.Close();
+            signUpView.Show();
         }
     }
 }

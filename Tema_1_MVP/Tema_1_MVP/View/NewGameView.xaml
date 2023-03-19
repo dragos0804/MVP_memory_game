@@ -176,7 +176,7 @@
                                Margin="10, 0, 10, 0"/>
                         <StackPanel Margin="10">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="20">
-                                <ComboBox SelectedIndex="2" ItemsSource="{Binding dimensions}" />
+                                <ComboBox SelectedIndex="2" ItemsSource="{Binding dimensions1}" />
                                 <TextBlock Text="x"
                                Foreground ="DarkGray"
                                FontSize="12"
@@ -185,8 +185,7 @@
                                TextAlignment="Center"
                                VerticalAlignment="Center"
                                Margin="10, 0, 10, 0"/>
-                                <ComboBox SelectedIndex="2" ItemsSource="{Binding dimensions}" />
-
+                                <ComboBox SelectedIndex="1" ItemsSource="{Binding dimensions2}" />
                             </StackPanel>
                             <Button x:Name="btnStartNewGame"
                             BorderThickness="0"

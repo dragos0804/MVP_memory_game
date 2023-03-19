@@ -5,32 +5,109 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tema_1_MVP.View"
         mc:Ignorable="d"
-        WindowState="Maximized"
+        Title="GameView" Height="650" Width="900"
         WindowStyle="None"
-        Title="GameView" Height="450" Width="800">
-    
-    <Grid>
-        <ItemsControl ItemsSource="{Binding Path=StringItems}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <ItemsControl ItemsSource="{Binding}">
-                        <!-- data contextul se aasociaza aici -->
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Button Content = "{Binding}"
-                                        Width = "60"
-                                        Height = "60"
-                                        Margin = "10"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </Grid>
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True">
+    <Window.Background>
+        <ImageBrush ImageSource="/Assets/game_background.jpg"/>
+    </Window.Background>
+    <Window.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <BitmapImage x:Key="DefaultImage" UriSource="/Assets/MemoryCards/backCard.png" />
+        <BitmapImage x:Key="PressedImage" UriSource="/Assets/MemoryCards/Cards/13.png" />
+    </Window.Resources>
+    <StackPanel Orientation="Vertical">
+        <Button x:Name="btnBack"
+                            BorderThickness="0"
+                            Foreground="White"
+                            FontSize="16"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="2"
+                            Margin="30, 30, 0, 30"
+                            HorizontalAlignment="Left"
+                            Click="OpenPause_Click">
+            <Image Source="/Assets/menu_icon.png"
+                   Height="30"
+                   Width="30"></Image>
+
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#DA34AE"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#C62DAE" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#FF505050" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="40" Height="40"
+                                        CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ItemsControl Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ButtonGrid}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="{Binding Rows}" Columns="{Binding Columns}" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Margin="5, 5, 5, 5"
+                            Width="100"
+                            Height="100">
+                            <Image Source="{StaticResource DefaultImage}" />
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <EventSetter Event="Click" Handler="Flips_Click" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <ContentPresenter />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Content">
+                                                <Setter.Value>
+                                                    <Image Source="{StaticResource PressedImage}" />
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </StackPanel>
 </Window>
