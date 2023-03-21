@@ -37,10 +37,10 @@
 
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="Background" Value="#DA34AE"/>
+                    <Setter Property="Background" Value="#462ADB"/>
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#C62DAE" />
+                            <Setter Property="Background" Value="#FF29149A" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Background" Value="#FF505050" />

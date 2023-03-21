@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tema_1_MVP.Model
+namespace Tema_1_MVP.Logic
 {
-    class GameModel
+    internal class User
     {
-
     }
 }

@@ -121,8 +121,4 @@
     <Resource Include="Assets\user_icon.png" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Logic\" />
-  </ItemGroup>
-
 </Project>

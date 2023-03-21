@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace Tema_1_MVP.View
 {
-    /// <summary>
-    /// Interaction logic for NewGameView.xaml
-    /// </summary>
     public partial class NewGameView : Window
     {
         public NewGameView()
@@ -26,6 +23,13 @@ namespace Tema_1_MVP.View
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void StartNewGame(object sender, RoutedEventArgs e) 
+        {
+            GameView gameView = new GameView(ComboboxDim1.SelectedItem.ToString(), ComboboxDim2.SelectedItem.ToString());
+            this.Close();
+            gameView.Show();
         }
     }
 }
