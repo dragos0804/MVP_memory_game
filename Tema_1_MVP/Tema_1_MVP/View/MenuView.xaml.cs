@@ -36,5 +36,11 @@ namespace Tema_1_MVP.View
         {
             Application.Current.Shutdown();
         }
+        private void btnOpenNewGameView(object sender, RoutedEventArgs e)
+        {
+            NewGameView newGameView = new NewGameView();
+            this.Close();
+            newGameView.Show();
+        }
     }
 }

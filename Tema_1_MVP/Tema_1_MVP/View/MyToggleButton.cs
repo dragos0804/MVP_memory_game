@@ -15,6 +15,8 @@ namespace Tema_1_MVP.View
         private Image imageFront { get; set; }
         private Image imageBack { get; set; }
 
+        private bool isMatched { get; set; }
+
         public Image GetFront()
         {
             return imageFront;
@@ -24,13 +26,14 @@ namespace Tema_1_MVP.View
         {
             return imageBack;
         }
-
         public MyToggleButton(string front)
         {
             Image image = new Image();
             image.Source = new BitmapImage(new Uri("/Assets/MemoryCards/backCard.png", UriKind.RelativeOrAbsolute));
             imageBack = new Image();
             imageBack = image;
+
+            SetImages(front);
         }
 
         public void SetImages(string front)

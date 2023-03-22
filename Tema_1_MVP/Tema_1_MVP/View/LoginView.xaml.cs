@@ -42,5 +42,12 @@ namespace Tema_1_MVP.View
             this.Close();
             signUpView.Show();
         }
+
+        private void btnMenu(object sender, RoutedEventArgs e)
+        {
+            MenuView menuView = new MenuView();
+            this.Close();
+            menuView.Show();
+        }
     }
 }
