@@ -25,7 +25,7 @@ namespace Tema_1_MVP.View
 
         public List<Button> m_ButtonGrid { get; set; }
 
-        public List<String> ImagePaths { get; set; }
+        public List<String> m_ImagePaths { get; set; }
 
         public GameView(string width, string height)
         {
@@ -40,7 +40,7 @@ namespace Tema_1_MVP.View
 
             // Create a two-dimensional array of buttons
             m_ButtonGrid = game.GetButtonGrid();
-            ImagePaths = game.GetImages(30);
+            m_ImagePaths = game.GetImages(30);
         }
 
         private void FlipsCard_Click(object sender, RoutedEventArgs e)

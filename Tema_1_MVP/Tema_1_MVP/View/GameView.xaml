@@ -59,7 +59,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Grid x:Name="ButtonGrid">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
@@ -78,8 +78,8 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Width="100" Height="100">
-                            <Image Source="{Binding ImagePaths}" />
+                        <Button Margin="5, 5, 5, 5">
+                            <Image Source="{Binding m_ImagePaths}" />
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
                                     <EventSetter Event="Click" Handler="FlipsCard_Click" />
@@ -92,7 +92,11 @@
                                     </Setter>
                                     <Style.Triggers>
                                         <Trigger Property="IsPressed" Value="True">
-                                            <Setter Property="Content" Value="{Binding ImagePaths}" />
+                                            <Setter Property="Content">
+                                                <Setter.Value>
+                                                    <Image Source="{Binding m_ImagePaths}" />
+                                                </Setter.Value>
+                                            </Setter>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>

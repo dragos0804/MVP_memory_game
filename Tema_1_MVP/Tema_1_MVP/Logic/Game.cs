@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Windows;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace Tema_1_MVP.Logic
 {
@@ -21,33 +23,35 @@ namespace Tema_1_MVP.Logic
 
             m_images = new List<string>(m_width * m_height / 2);
 
-            Random rnd= new Random();
+            Random rnd = new Random();
 
             List<int> randomImagesIndexes = new List<int>();
-            for(int i = 0; i < 30; i++)
+            for (int i = 0; i < 30; i++)
                 randomImagesIndexes.Add(i);
             randomImagesIndexes = randomImagesIndexes.OrderBy(x => rnd.Next()).ToList();
 
             for (int i = 0; i < width * height / 2; i++)
+            {
                 m_images.Add("/Assets/MemoryCards/Cards/" + randomImagesIndexes[i].ToString() + ".png");
+                m_images.Add("/Assets/MemoryCards/Cards/" + randomImagesIndexes[i].ToString() + ".png");
+            }
+
+            m_images = m_images.OrderBy(x => rnd.Next()).ToList();
 
             m_ButtonGrid = new List<Button>(width * height);
             for (int i = 0; i < width * height; i++)
                 m_ButtonGrid.Add(new Button());
 
-            int position = 0;
-
-            for(int i = 0; i < m_height; i++)
+            for (int i = 0; i < m_height * m_width; i++)
             {
-                for(int j = 0; j < m_width; j++)
-                {
-                    if (position == m_images.Count / 2)
-                        position = 0;
-                    m_ButtonGrid[i * m_width + j].DataContext = m_images[position++];
-                }
+                Image image = new Image();
+                image.Source = new BitmapImage(new Uri("/Assets/MemoryCards/backCard.png", UriKind.RelativeOrAbsolute));
+                m_ButtonGrid[i].Content = image;
+                Console.WriteLine(m_images[i]);
+                Console.WriteLine("\n");
+                m_ButtonGrid[i].Width = 100;
+                m_ButtonGrid[i].Height = 100;
             }
-            // Shuffle the list using OrderBy and rnd.Next()
-            m_ButtonGrid = m_ButtonGrid.OrderBy(x => rnd.Next()).ToList();
         }
         public List<string> GetImages(int n)
         {
