@@ -8,5 +8,14 @@ namespace Tema_1_MVP.Logic
 {
     internal class User
     {
+        private string username { get; set; }
+        
+        private string image { get; set; }
+
+        User(string username, string image)
+        {
+            this.username = username;
+            this.image = image;
+        }
     }
 }

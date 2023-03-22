@@ -20,43 +20,63 @@ namespace Tema_1_MVP.View
     /// </summary>
     public partial class GameView : Window
     {
-        public int Rows { get; set; }
-        public int Columns { get; set; }
+        public int m_Rows { get; set; }
+        public int m_Columns { get; set; }
 
-        public List<int> ButtonGrid { get; set; }
+        public List<Button> m_ButtonGrid { get; set; }
+
+        public List<String> ImagePaths { get; set; }
 
         public GameView(string width, string height)
         {
             InitializeComponent();
             DataContext = this;
 
-            Rows = int.Parse(width);
-            Columns = int.Parse(height);
+            m_Rows = int.Parse(width);
+            m_Columns = int.Parse(height);
 
-            Game game= new Game();
-            
+            Game game = new Game(m_Rows, m_Columns);
+
 
             // Create a two-dimensional array of buttons
-            ButtonGrid = Enumerable.Range(1, Rows * Columns).ToList();
+            m_ButtonGrid = game.GetButtonGrid();
+            ImagePaths = game.GetImages(30);
         }
 
-        private void Flips_Click(object sender, RoutedEventArgs e)
+        private void FlipsCard_Click(object sender, RoutedEventArgs e)
         {
-            Button button = sender as Button;
-            Image image = button.Content as Image;
-            BitmapImage defaultImage = (BitmapImage)Resources["DefaultImage"];
-            BitmapImage pressedImage = (BitmapImage)Resources["PressedImage"];
+            var button = (Button)sender;
+            var imagePath = (string)button.DataContext;
 
-            if (image.Source == defaultImage)
+            if (!string.IsNullOrEmpty(imagePath))
             {
-                image.Source = pressedImage;
-            }
-            else
-            {
-                image.Source = defaultImage;
+                var image = new Image { Source = new BitmapImage(new Uri(imagePath)) };
+                var contentPresenter = FindVisualChild<ContentPresenter>(button);
+
+                if (contentPresenter != null)
+                {
+                    contentPresenter.Content = image;
+                }
             }
         }
-
+        public static T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+                if (child != null && child is T)
+                {
+                    return (T)child;
+                }
+                else
+                {
+                    T foundChild = FindVisualChild<T>(child);
+                    if (foundChild != null)
+                        return foundChild;
+                }
+            }
+            return null;
+        }
         private void OpenPause_Click(object sender, RoutedEventArgs e)
         {
 
