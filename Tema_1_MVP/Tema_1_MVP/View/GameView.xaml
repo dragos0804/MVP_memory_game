@@ -81,7 +81,7 @@
                         <local:MyToggleButton Click="ToggleButton_Click">
                             <local:MyToggleButton.Style>
                                 <Style TargetType="{x:Type local:MyToggleButton}">
-                                    <Setter Property="Content" Value="{StaticResource DefaultImage}"/>
+                                    <Setter Property="Content" Value="{Binding}"/>
                                 </Style>
                             </local:MyToggleButton.Style>
                         </local:MyToggleButton>

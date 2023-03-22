@@ -43,7 +43,7 @@ namespace Tema_1_MVP.Logic
             
             m_ButtonGrid = new List<MyToggleButton>();
             for (int i = 0; i < width * height; i++)
-                m_ButtonGrid.Add(new MyToggleButton("/Assets/MemoryCards/backCard.png"));
+                m_ButtonGrid.Add(new MyToggleButton(""));
            
             for (int i = 0; i < m_height * m_width; i++)
             {

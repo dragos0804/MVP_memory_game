@@ -42,21 +42,29 @@ namespace Tema_1_MVP.View
             // Create a two-dimensional array of buttons
             m_ButtonGrid = game.GetButtonGrid();
             m_ImagePaths = game.GetImages(30);
+
+           
+
+            for (int i = 0; i < m_ButtonGrid.Count; i++)
+            {
+                m_ButtonGrid[i].Content = m_ButtonGrid[i].GetBack();
+            }
+
         }
         private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
             var toggleButton = (MyToggleButton)sender;
             var index = m_ButtonGrid.IndexOf(toggleButton);
 
-            if (toggleButton.DataContext == toggleButton.GetBack())
+            if (toggleButton.Content == toggleButton.GetBack())
             {
                 // set the button's content to the second image path
-                toggleButton.DataContext = toggleButton.GetFront();
+                toggleButton.Content = toggleButton.GetFront();
             }
             else
             {
                 // set the button's content back to the default image
-                toggleButton.DataContext = toggleButton.GetBack();
+                toggleButton.Content = toggleButton.GetBack();
             }
         }
         private void FlipsCard_Click(object sender, RoutedEventArgs e)

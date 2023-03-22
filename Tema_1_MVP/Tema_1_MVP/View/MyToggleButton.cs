@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Tema_1_MVP.View
@@ -26,6 +27,7 @@ namespace Tema_1_MVP.View
         {
             return imageBack;
         }
+
         public MyToggleButton(string front)
         {
             Image image = new Image();
@@ -42,6 +44,13 @@ namespace Tema_1_MVP.View
             image2.Source = new BitmapImage(new Uri(front, UriKind.RelativeOrAbsolute));
             imageFront = new Image();
             imageFront = image2;
+        }
+        public void SetImagesBack()
+        {
+            Image image2 = new Image();
+            image2.Source = new BitmapImage(new Uri("/Assets/MemoryCards/backCard.png", UriKind.RelativeOrAbsolute));
+            imageBack = new Image();
+            imageBack = image2;
         }
         private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
