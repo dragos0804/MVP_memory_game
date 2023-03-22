@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -23,7 +24,7 @@ namespace Tema_1_MVP.View
         public int m_Rows { get; set; }
         public int m_Columns { get; set; }
 
-        public List<Button> m_ButtonGrid { get; set; }
+        public List<MyToggleButton> m_ButtonGrid { get; set; }
 
         public List<String> m_ImagePaths { get; set; }
 
@@ -42,7 +43,22 @@ namespace Tema_1_MVP.View
             m_ButtonGrid = game.GetButtonGrid();
             m_ImagePaths = game.GetImages(30);
         }
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            var toggleButton = (MyToggleButton)sender;
+            var index = m_ButtonGrid.IndexOf(toggleButton);
 
+            if (toggleButton.DataContext == toggleButton.GetBack())
+            {
+                // set the button's content to the second image path
+                toggleButton.DataContext = toggleButton.GetFront();
+            }
+            else
+            {
+                // set the button's content back to the default image
+                toggleButton.DataContext = toggleButton.GetBack();
+            }
+        }
         private void FlipsCard_Click(object sender, RoutedEventArgs e)
         {
             var button = (Button)sender;

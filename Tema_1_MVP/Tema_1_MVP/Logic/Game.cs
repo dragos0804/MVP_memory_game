@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using System.Windows.Controls.Primitives;
+using Tema_1_MVP.View;
 
 namespace Tema_1_MVP.Logic
 {
@@ -14,7 +16,7 @@ namespace Tema_1_MVP.Logic
         private List<string> m_images;
         private int m_height { get; set; }
         private int m_width { get; set; }
-        private List<Button> m_ButtonGrid;
+        private List<MyToggleButton> m_ButtonGrid;
         public Game(int width, int height)
         {
             // Keeping this data in this class for serialization
@@ -38,17 +40,14 @@ namespace Tema_1_MVP.Logic
 
             m_images = m_images.OrderBy(x => rnd.Next()).ToList();
 
-            m_ButtonGrid = new List<Button>(width * height);
+            
+            m_ButtonGrid = new List<MyToggleButton>(width * height);
             for (int i = 0; i < width * height; i++)
-                m_ButtonGrid.Add(new Button());
-
+                m_ButtonGrid.Add(new MyToggleButton("/Assets/MemoryCards/backCard.png"));
+           
             for (int i = 0; i < m_height * m_width; i++)
             {
-                Image image = new Image();
-                image.Source = new BitmapImage(new Uri("/Assets/MemoryCards/backCard.png", UriKind.RelativeOrAbsolute));
-                m_ButtonGrid[i].Content = image;
-                Console.WriteLine(m_images[i]);
-                Console.WriteLine("\n");
+                m_ButtonGrid[i].SetImages(m_images[i]);
                 m_ButtonGrid[i].Width = 100;
                 m_ButtonGrid[i].Height = 100;
             }
@@ -70,7 +69,7 @@ namespace Tema_1_MVP.Logic
             // Otherwise, return a new list containing the first n elements
             return m_images.GetRange(0, n);
         }
-        public List<Button> GetButtonGrid()
+        public List<MyToggleButton> GetButtonGrid()
         {
             return m_ButtonGrid;
         }

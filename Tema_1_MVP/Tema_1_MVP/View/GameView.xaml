@@ -78,30 +78,13 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Margin="5, 5, 5, 5">
-                            <Image Source="{Binding m_ImagePaths}" />
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <EventSetter Event="Click" Handler="FlipsCard_Click" />
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <ContentPresenter />
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsPressed" Value="True">
-                                            <Setter Property="Content">
-                                                <Setter.Value>
-                                                    <Image Source="{Binding m_ImagePaths}" />
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Trigger>
-                                    </Style.Triggers>
+                        <local:MyToggleButton Click="ToggleButton_Click">
+                            <local:MyToggleButton.Style>
+                                <Style TargetType="{x:Type local:MyToggleButton}">
+                                    <Setter Property="Content" Value="{StaticResource DefaultImage}"/>
                                 </Style>
-                            </Button.Style>
-                        </Button>
+                            </local:MyToggleButton.Style>
+                        </local:MyToggleButton>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
